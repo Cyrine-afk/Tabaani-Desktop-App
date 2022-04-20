@@ -21,14 +21,25 @@ public class MyConnection {
     public String login="root";
     public String pwd="";
     Connection cnx;
+    public static MyConnection instance;
     
-    public MyConnection() {
+    private MyConnection() {
         try {
             cnx = DriverManager.getConnection(url, login, pwd);
             System.out.println("Connection established !");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-        
+    }
+    
+    public Connection getCnx() {
+        return cnx;
+    }
+    
+    public static MyConnection getInstance() {
+        if (instance == null) {
+            instance = new MyConnection();
+        }
+        return instance;
     }
 }
