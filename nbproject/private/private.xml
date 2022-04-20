@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/3ème_TIC_ESPRIT/2eme_Semestre/PIDEV/Code/Desktop/Tabaani/src/tabaani/services/ThemesCRUD.java</file>
-            <file>file:/D:/3ème_TIC_ESPRIT/2eme_Semestre/PIDEV/Code/Desktop/Tabaani/src/tabaani/utils/MyConnection.java</file>
-            <file>file:/D:/3ème_TIC_ESPRIT/2eme_Semestre/PIDEV/Code/Desktop/Tabaani/src/tabaani/tests/MainClass.java</file>
+            <file>file:/D:/3ème_TIC_ESPRIT/2eme_Semestre/PIDEV/Code/Desktop/Tabaani/src/tabaani/gui/ADDthemes.fxml</file>
+            <file>file:/D:/3ème_TIC_ESPRIT/2eme_Semestre/PIDEV/Code/Desktop/Tabaani/src/tabaani/gui/FirstWindow.java</file>
+            <file>file:/D:/3ème_TIC_ESPRIT/2eme_Semestre/PIDEV/Code/Desktop/Tabaani/src/tabaani/entities/Themes.java</file>
+            <file>file:/D:/3ème_TIC_ESPRIT/2eme_Semestre/PIDEV/Code/Desktop/Tabaani/src/tabaani/gui/ADDthemesController.java</file>
         </group>
     </open-files>
 </project-private>
