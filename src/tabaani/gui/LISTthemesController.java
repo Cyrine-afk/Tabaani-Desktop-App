@@ -25,7 +25,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javax.swing.JOptionPane;
 import tabaani.entities.Themes;
+import tabaani.services.ThemesCRUD;
 import tabaani.utils.MyConnection;
 
 /**
@@ -53,6 +55,7 @@ public class LISTthemesController implements Initializable {
     ObservableList<Themes> obList = FXCollections.observableArrayList();
     Connection cnx2;
     String query = null;
+    ThemesCRUD th = new ThemesCRUD();
     @FXML
     private TableColumn<Themes, String> picTh;
     
@@ -85,6 +88,7 @@ public class LISTthemesController implements Initializable {
         picTh.setCellValueFactory(new PropertyValueFactory<>("imagetheme"));
     
         
+        
     }
 
 
@@ -108,6 +112,24 @@ public class LISTthemesController implements Initializable {
 
     @FXML
     private void go_deleteT(ActionEvent event) {
+       /*Themes t = tblThemes.getSelectionModel().getSelectedItem();
+        th.supprimerTheme(t);
+        JOptionPane.showMessageDialog(null, "Theme successfully deleted !");
+        refreshData();
+        btnEdit.setDisable(true);
+        btnDelete.setDisable(true);
+        clear();*/
     }
+
+    /*private void refreshData() {
+        obList = th.getAll();
+        tblThemes.setItems(obList);
+    }
+
+    private void clear() {
+        idTh.clear();
+        nameTh.clear();
+        picTh.clear();
+    }*/
     
 }

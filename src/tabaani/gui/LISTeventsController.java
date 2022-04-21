@@ -130,6 +130,8 @@ public class LISTeventsController implements Initializable {
 
     @FXML
     private void go_deleteT(ActionEvent event) {
+        
+        
     }
     
 }
