@@ -63,6 +63,24 @@ public class Events {
         this.nbr_going = nbr_going;
     }
 
+    public Events(int id, int nbrmaxpart, String imageevent, String eventname, String description, String eventaddress, Themes eventtheme_id, User org_id, int nbr_going) {
+        this.id = id;
+        this.nbrmaxpart = nbrmaxpart;
+        this.imageevent = imageevent;
+        this.eventname = eventname;
+        this.description = description;
+        this.eventaddress = eventaddress;
+        this.eventtheme_id = eventtheme_id;
+        this.org_id = org_id;
+        this.nbr_going = nbr_going;
+    }
+
+    public Events(int aInt, int aInt0, String string, String string0, String string1, String string2, int aInt1, int aInt2, int aInt3) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+
     public int getId() {
         return id;
     }

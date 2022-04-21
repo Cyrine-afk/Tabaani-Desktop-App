@@ -56,6 +56,16 @@ public class EventsMenuController implements Initializable {
 
     @FXML
     private void go_listE(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("LISTevents.fxml"));
+        
+        try {
+            Parent root = loader.load();
+            
+            btnBack.getScene().setRoot(root);
+            
+        } catch (IOException ex) {
+            System.out.println("Error: "+ex.getMessage());
+        }
     }
 
     @FXML

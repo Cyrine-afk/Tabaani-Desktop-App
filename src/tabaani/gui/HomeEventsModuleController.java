@@ -75,7 +75,7 @@ public class HomeEventsModuleController implements Initializable {
 
     @FXML
     private void go_part_menu(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ParticipantsEventsMenu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("LISTpartEvent.fxml"));
         
         try {
             Parent root = loader.load();

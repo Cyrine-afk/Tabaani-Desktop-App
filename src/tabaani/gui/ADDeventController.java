@@ -61,15 +61,7 @@ public class ADDeventController implements Initializable {
     private TextField nfNbrGoingEvent;
     @FXML
     private ComboBox<String> tfOrgEvent = new ComboBox<>();
-    @FXML
-    private AnchorPane anchor;
-    List<Themes> myLst;
-    ThemesCRUD CC= new ThemesCRUD();
-    int i=0;
-    @FXML
-    private Label Control;
-    private URL urll;
-    private ResourceBundle rbb;
+   
 
     /**
      * Initializes the controller class.
@@ -77,32 +69,12 @@ public class ADDeventController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        Control.setVisible(false);
-        tfOrgEvent.getItems().addAll("En ligne", "Exposé", "Festival", "Formation", "Autres");
-        myLst = CC.afficherThemes();
-        for (i=0;i<myLst.size();i++) { 
-            tfThemeEvent.getItems().add(myLst.get(i).getThemename());
-        }
         
     }    
     
     @FXML
     private void saveEvent(ActionEvent event) {
-        try {
-            
-            if (i>0) {
-                initialize(urll, rbb);
-            }
-            i++;
-            System.out.println(i);
-            Control.setVisible(false);
-            String control = "";
-            
-            //Controle de saisie    
-            
-        } catch (Exception ex) {
-            System.out.println("Error: "+ex.getMessage());
-        }
+        
     }
     
     @FXML
