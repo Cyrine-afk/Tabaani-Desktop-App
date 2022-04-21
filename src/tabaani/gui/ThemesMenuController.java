@@ -14,28 +14,23 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import tabaani.entities.Themes;
-import tabaani.services.ThemesCRUD;
 
 /**
  * FXML Controller class
  *
  * @author DELL
  */
-public class ADDthemeController implements Initializable {
+public class ThemesMenuController implements Initializable {
 
-    @FXML
-    private TextField tfNameTheme;
-    @FXML
-    private TextField tfPictureEvent;
-    @FXML
-    private Button btnSave;
     @FXML
     private ImageView logoImg;
     @FXML
     private Button btnBack;
+    @FXML
+    private Button btnAddT;
+    @FXML
+    private Button btnListT;
 
     /**
      * Initializes the controller class.
@@ -45,19 +40,38 @@ public class ADDthemeController implements Initializable {
         // TODO
     }    
 
-    @FXML
-    private void saveTheme(ActionEvent event) {
-        String name = tfNameTheme.getText();
-        String pic = tfPictureEvent.getText();
-        
-        Themes t = new Themes(name, pic);
-        ThemesCRUD tcr = new ThemesCRUD();
-        tcr.ajouterTheme2(t);
-    }
 
     @FXML
     private void back(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ThemesMenu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeEventsModule.fxml"));
+        
+        try {
+            Parent root = loader.load();
+            
+            btnBack.getScene().setRoot(root);
+            
+        } catch (IOException ex) {
+            System.out.println("Error: "+ex.getMessage());
+        }
+    }
+
+    @FXML
+    private void go_addT(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ADDtheme.fxml"));
+        
+        try {
+            Parent root = loader.load();
+            
+            btnBack.getScene().setRoot(root);
+            
+        } catch (IOException ex) {
+            System.out.println("Error: "+ex.getMessage());
+        }
+    }
+
+    @FXML
+    private void go_listT(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("LISTthemes.fxml"));
         
         try {
             Parent root = loader.load();

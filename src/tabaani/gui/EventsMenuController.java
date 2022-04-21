@@ -14,26 +14,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import tabaani.entities.Themes;
-import tabaani.services.ThemesCRUD;
 
 /**
  * FXML Controller class
  *
  * @author DELL
  */
-public class ADDthemeController implements Initializable {
+public class EventsMenuController implements Initializable {
 
     @FXML
-    private TextField tfNameTheme;
-    @FXML
-    private TextField tfPictureEvent;
-    @FXML
-    private Button btnSave;
-    @FXML
     private ImageView logoImg;
+    @FXML
+    private Button btnAddE;
+    @FXML
+    private Button btnListE;
     @FXML
     private Button btnBack;
 
@@ -46,18 +41,16 @@ public class ADDthemeController implements Initializable {
     }    
 
     @FXML
-    private void saveTheme(ActionEvent event) {
-        String name = tfNameTheme.getText();
-        String pic = tfPictureEvent.getText();
-        
-        Themes t = new Themes(name, pic);
-        ThemesCRUD tcr = new ThemesCRUD();
-        tcr.ajouterTheme2(t);
+    private void go_addE(ActionEvent event) {
+    }
+
+    @FXML
+    private void go_listE(ActionEvent event) {
     }
 
     @FXML
     private void back(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ThemesMenu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeEventsModule.fxml"));
         
         try {
             Parent root = loader.load();

@@ -28,11 +28,11 @@ public class FirstWindow extends Application {
     public void start(Stage primaryStage) {
         
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("ADDtheme.fxml")); //appel au fichier qui regrouppe les ressources graphiques de mon interface
+            Parent root = FXMLLoader.load(getClass().getResource("HomeEventsModule.fxml")); //appel au fichier qui regrouppe les ressources graphiques de mon interface
             
             Scene scene = new Scene(root);
             
-            primaryStage.setTitle("Add Theme");
+            primaryStage.setTitle("Module - Events");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {
