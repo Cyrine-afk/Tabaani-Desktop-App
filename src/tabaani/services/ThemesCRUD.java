@@ -118,4 +118,25 @@ public class ThemesCRUD {
         
     }
     
+    public boolean CheckThemeByName(String name) {
+
+        boolean p = false;
+        try {
+
+            Statement pst = cnx2.createStatement();
+
+            ResultSet rs = pst.executeQuery("SELECT * FROM themes WHERE themename='" + name + "'");
+
+            while (rs.next()) {
+                 p=true;
+
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return p;
+
+    }
+    
 }

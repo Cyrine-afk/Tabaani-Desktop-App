@@ -42,6 +42,16 @@ public class EventsMenuController implements Initializable {
 
     @FXML
     private void go_addE(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ADDevent.fxml"));
+        
+        try {
+            Parent root = loader.load();
+            
+            btnBack.getScene().setRoot(root);
+            
+        } catch (IOException ex) {
+            System.err.println("Error: "+ex.getMessage());
+        }
     }
 
     @FXML

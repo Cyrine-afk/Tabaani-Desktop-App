@@ -33,5 +33,10 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
+       <Label fx:id="Control" alignment="TOP_LEFT" layoutY="396.0" prefHeight="119.0" prefWidth="253.0" style="-fx-background-color: rgba(255,0,0,0.2);" text="Label" textFill="#fcfcfc">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
