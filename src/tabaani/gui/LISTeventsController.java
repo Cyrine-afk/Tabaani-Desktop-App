@@ -43,8 +43,6 @@ public class LISTeventsController implements Initializable {
     @FXML
     private TableView<Events> tblThemes;
     @FXML
-    private TableColumn<Events, String> idE;
-    @FXML
     private TableColumn<Events, String> nameE;
     @FXML
     private TableColumn<Events, String> maxE;
@@ -68,6 +66,8 @@ public class LISTeventsController implements Initializable {
     ObservableList<Events> obList = FXCollections.observableArrayList();
     Connection cnx2;
     String query = null;
+    @FXML
+    private TableColumn<Events, String> dateE;
 
     /**
      * Initializes the controller class.
@@ -78,6 +78,7 @@ public class LISTeventsController implements Initializable {
         
         try {
             ResultSet rs = cnx2.createStatement().executeQuery("SELECT * FROM events");
+            LocalDate DateEvent = dateE.getValue();
            
             while (rs.next()){
         
@@ -87,7 +88,7 @@ public class LISTeventsController implements Initializable {
                         rs.getString("imageevent"),
                         rs.getString("eventname"),
                         rs.getString("description"),
-                        //rs.getLocalDate("eventdate"),
+                        rs.getLocalDate("eventdate"),
                         rs.getString("eventaddress"),
                         rs.getInt("eventtheme_id"),
                         rs.getInt("org_id"),
@@ -99,7 +100,6 @@ public class LISTeventsController implements Initializable {
             System.err.println(ex.getMessage());
         }
         
-        idE.setCellValueFactory(new PropertyValueFactory<>("id"));
         nameE.setCellValueFactory(new PropertyValueFactory<>("eventname"));
         maxE.setCellValueFactory(new PropertyValueFactory<>("nbrmaxpart"));
         picE.setCellValueFactory(new PropertyValueFactory<>("imageevent"));

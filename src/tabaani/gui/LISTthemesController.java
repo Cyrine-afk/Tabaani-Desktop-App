@@ -44,8 +44,6 @@ public class LISTthemesController implements Initializable {
     @FXML
     private TableView<Themes> tblThemes;
     @FXML
-    private TableColumn<Themes, String> idTh;
-    @FXML
     private TableColumn<Themes, String> nameTh;
     @FXML
     private Button btnEdit;
@@ -83,7 +81,6 @@ public class LISTthemesController implements Initializable {
             System.err.println(ex.getMessage());
         }
         
-        idTh.setCellValueFactory(new PropertyValueFactory<>("id"));
         nameTh.setCellValueFactory(new PropertyValueFactory<>("themename"));
         picTh.setCellValueFactory(new PropertyValueFactory<>("imagetheme"));
     

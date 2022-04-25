@@ -14,8 +14,6 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import tabaani.entities.Events;
 import tabaani.entities.Themes;
 import tabaani.entities.User;

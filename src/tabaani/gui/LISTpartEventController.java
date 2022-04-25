@@ -47,8 +47,6 @@ public class LISTpartEventController implements Initializable {
     @FXML
     private Button btnDelete;
     @FXML
-    private TableColumn<ParticipateEvent, String> idP;
-    @FXML
     private TableView<ParticipateEvent> tblPartE;
     
     ObservableList<ParticipateEvent> obList = FXCollections.observableArrayList();
@@ -78,7 +76,6 @@ public class LISTpartEventController implements Initializable {
             System.err.println(ex.getMessage());
         }
         
-        idP.setCellValueFactory(new PropertyValueFactory<>("id"));
         eventP.setCellValueFactory(new PropertyValueFactory<>("event_id"));
         UserP.setCellValueFactory(new PropertyValueFactory<>("user_id"));
     }    

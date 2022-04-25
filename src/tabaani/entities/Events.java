@@ -166,6 +166,6 @@ public class Events {
         return "Events{" + "id=" + id + ", nbrmaxpart=" + nbrmaxpart + ", imageevent=" + imageevent + ", eventname=" + eventname + ", description=" + description + ", eventdate=" + eventdate + ", eventaddress=" + eventaddress + ", eventtheme_id=" + eventtheme_id + ", org_id=" + org_id + ", nbr_going=" + nbr_going + '}';
     }
     
-        
+      
     
 }

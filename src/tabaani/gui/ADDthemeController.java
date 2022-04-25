@@ -15,7 +15,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -63,11 +65,15 @@ public class ADDthemeController implements Initializable {
             if (tfNameTheme.getText() == null || tfNameTheme.getText().trim().isEmpty()) {
                 control = "Make sure to fill all the fields";
                 Control.setText(control);  
+                Alert a = new Alert(Alert.AlertType.ERROR, "Make sure to fill all the fields", ButtonType.OK);
+                a.show();
                 //notificationShow("Alert!",control);  
                 System.out.println("Alert!"+control);
             } else if (evt.CheckThemeByName(tfNameTheme.getText())) {
                 control += "\n Theme name already exists !";
                 Control.setText(control);
+                 Alert a1 = new Alert(Alert.AlertType.ERROR, "Theme name already exists !", ButtonType.OK);
+                a1.show();
                 //notificationShow("Alert!",control); 
                 System.out.println("Alert!"+control);
                 tfNameTheme.setStyle("background-color: rgba(255,0,0,0.2);");

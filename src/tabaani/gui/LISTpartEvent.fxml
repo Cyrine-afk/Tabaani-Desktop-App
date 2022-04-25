@@ -29,9 +29,8 @@
       </Label>
       <TableView fx:id="tblPartE" layoutX="12.0" layoutY="72.0" prefHeight="257.0" prefWidth="578.0">
         <columns>
-          <TableColumn fx:id="idP" prefWidth="75.0" text="ID" />
-          <TableColumn fx:id="eventP" prefWidth="75.0" text="Event ID" />
-            <TableColumn fx:id="UserP" prefWidth="75.0" text="User ID" />
+          <TableColumn fx:id="eventP" prefWidth="75.0" text="Event Name" />
+            <TableColumn fx:id="UserP" prefWidth="75.0" text="Participant Login" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

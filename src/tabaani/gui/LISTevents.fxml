@@ -29,11 +29,11 @@
       </Label>
       <TableView fx:id="tblThemes" layoutX="12.0" layoutY="72.0" prefHeight="561.0" prefWidth="1190.0">
         <columns>
-          <TableColumn fx:id="idE" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="nameE" prefWidth="75.0" text="Name" />
             <TableColumn fx:id="maxE" prefWidth="75.0" text="Max Particiants" />
             <TableColumn fx:id="picE" prefWidth="75.0" text="Picture" />
             <TableColumn fx:id="descE" prefWidth="75.0" text="Description" />
+            <TableColumn fx:id="dateE" prefWidth="75.0" text="Date" />
             <TableColumn fx:id="adrE" prefWidth="75.0" text="Address" />
             <TableColumn fx:id="themeE" prefWidth="75.0" text="Theme" />
             <TableColumn fx:id="orgE" prefWidth="75.0" text="Host" />
