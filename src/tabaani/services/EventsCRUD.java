@@ -50,14 +50,14 @@ public class EventsCRUD {
             + "VALUES (?,?,?,?,?,?,?,?,?)"; //requete pré-compilée 
             
         try {
-            Date Date_event = Date.valueOf(E.getEventdate());
+            //Date Date_event = Date.valueOf(E.getEventdate());
             
             PreparedStatement pst = cnx2.prepareStatement(requete2); //pour les requetes dynamiiques + plus rapide que statement (temps d'execution)
             pst.setString(1, E.getEventname());
             pst.setInt(2, E.getNbrmaxpart());
             pst.setString(3, E.getImageevent());
             pst.setString(4, E.getDescription());
-            pst.setDate(5, Date_event);
+            pst.setDate(5, E.getEventdate());
             pst.setString(6, E.getEventaddress());
             pst.setString(7, E.getEventtheme_id().getThemename());
             pst.setString(8, E.getOrg_id().getLogin_user());
@@ -78,14 +78,14 @@ public class EventsCRUD {
             Statement st = cnx2.createStatement();
             ResultSet rs = st.executeQuery(requete3); 
             
-            while (rs.next()) {
+            /*while (rs.next()) {
                 
                 if (rs.getInt("id") != 0 && FindEvent(rs.getInt("id")).getEventdate().isAfter(LocalDate.now()) ) {
                   Events p = FindEvent(rs.getInt("id"));
                   eventsList.add(p);
                 }              
                 
-            }
+            }*/
             
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -119,7 +119,7 @@ public class EventsCRUD {
                 
                 p.setId(id);
                 p.setOrg_id(id_user);
-                p.setEventdate(date);
+               // p.setEventdate(date);
                 p.setEventtheme_id(categorie);
                 p.setNbr_going(capacite_event);
                 p.setDescription(description);

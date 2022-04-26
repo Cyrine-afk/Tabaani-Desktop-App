@@ -7,14 +7,20 @@ package tabaani.gui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Control;
@@ -29,6 +35,7 @@ import tabaani.entities.Events;
 import tabaani.entities.Themes;
 import tabaani.services.EventsCRUD;
 import tabaani.services.ThemesCRUD;
+import tabaani.utils.MyConnection;
 
 /**
  * FXML Controller class
@@ -61,6 +68,17 @@ public class ADDeventController implements Initializable {
     private TextField nfNbrGoingEvent;
     @FXML
     private ComboBox<String> tfOrgEvent = new ComboBox<>();
+    
+    private URL urll;
+    private ResourceBundle rbb;
+    ThemesCRUD evt = new ThemesCRUD();
+    ObservableList<Events> obList = FXCollections.observableArrayList();
+    Connection cnx2 = MyConnection.getInstance().getCnx();
+    String query = null;
+    EventsCRUD th ;
+    Events event = null;
+    PreparedStatement preparedStatement = null ;
+    private boolean update;
    
 
     /**
@@ -69,11 +87,47 @@ public class ADDeventController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        //loadData();
         
     }    
     
     @FXML
     private void saveEvent(ActionEvent event) {
+        
+        /*try {
+            String control ="";
+            //controle de saisie    
+            if (tfNameEvent.getText() == null || 
+                tfImgEvent.getText().trim().isEmpty() ||
+                nfMaxPEvent.getInt().trim().isEmpty() ||
+                tfImgEvent.getText().trim().isEmpty() ||
+                tfImgEvent.getText().trim().isEmpty() ||
+                tfImgEvent.getText().trim().isEmpty() ||
+                tfImgEvent.getText().trim().isEmpty() ||
+                tfImgEvent.getText().trim().isEmpty() ||
+                
+                ) {
+                control = "Make sure to fill all the fields";
+                Control.setText(control);  
+                Alert a = new Alert(Alert.AlertType.ERROR, "Make sure to fill all the fields", ButtonType.OK);
+                a.show();
+            } else if (evt.CheckThemeByName(tfNameTheme.getText())) {
+                control += "\n Theme name already exists !";
+                Control.setText(control);
+                 Alert a1 = new Alert(Alert.AlertType.ERROR, "Theme name already exists !", ButtonType.OK);
+                a1.show();
+                tfNameTheme.setStyle("background-color: rgba(255,0,0,0.2);");
+            } else {
+                String name = tfNameTheme.getText();
+                String pic = tfPictureEvent.getText();
+        
+                Themes t = new Themes(name, pic);
+                ThemesCRUD tcr = new ThemesCRUD();
+                tcr.ajouterTheme2(t);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error: "+ex.getMessage());
+        }*/
         
     }
     

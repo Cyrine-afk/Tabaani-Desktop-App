@@ -35,8 +35,6 @@
             <TableColumn fx:id="descE" prefWidth="75.0" text="Description" />
             <TableColumn fx:id="dateE" prefWidth="75.0" text="Date" />
             <TableColumn fx:id="adrE" prefWidth="75.0" text="Address" />
-            <TableColumn fx:id="themeE" prefWidth="75.0" text="Theme" />
-            <TableColumn fx:id="orgE" prefWidth="75.0" text="Host" />
             <TableColumn fx:id="nbrGoingE" prefWidth="75.0" text="Nbr Going" />
         </columns>
          <columnResizePolicy>

@@ -5,6 +5,7 @@
  */
 package tabaani.entities;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 /**
@@ -17,7 +18,7 @@ public class Events {
     private String imageevent;
     private String eventname;
     private String description;
-    private LocalDate eventdate;
+    private Date eventdate;
     private String eventaddress;
     private Themes eventtheme_id;
     private User org_id;
@@ -27,7 +28,7 @@ public class Events {
     }
     
 
-    public Events(int id, int nbrmaxpart, String imageevent, String eventname, String description, LocalDate eventdate, String eventaddress, Themes eventtheme_id, User org_id, int nbr_going) {
+    public Events(int id, int nbrmaxpart, String imageevent, String eventname, String description, Date eventdate, String eventaddress, Themes eventtheme_id, User org_id, int nbr_going) {
         this.id = id;
         this.nbrmaxpart = nbrmaxpart;
         this.imageevent = imageevent;
@@ -40,7 +41,7 @@ public class Events {
         this.nbr_going = nbr_going;
     }
 
-    public Events(int nbrmaxpart, String imageevent, String eventname, String description, LocalDate eventdate, String eventaddress, Themes eventtheme_id, User org_id, int nbr_going) {
+    public Events(int nbrmaxpart, String imageevent, String eventname, String description, Date eventdate, String eventaddress, Themes eventtheme_id, User org_id, int nbr_going) {
         this.nbrmaxpart = nbrmaxpart;
         this.imageevent = imageevent;
         this.eventname = eventname;
@@ -52,7 +53,7 @@ public class Events {
         this.nbr_going = nbr_going;
     }
 
-    public Events(int nbrmaxpart, String eventname, String description, LocalDate eventdate, String eventaddress, Themes eventtheme_id, User org_id, int nbr_going) {
+    public Events(int nbrmaxpart, String eventname, String description, Date eventdate, String eventaddress, Themes eventtheme_id, User org_id, int nbr_going) {
         this.nbrmaxpart = nbrmaxpart;
         this.eventname = eventname;
         this.description = description;
@@ -74,6 +75,19 @@ public class Events {
         this.org_id = org_id;
         this.nbr_going = nbr_going;
     }
+
+    public Events(int id, int nbrmaxpart, String imageevent, String eventname, String description, Date eventdate, String eventaddress, int nbr_going) {
+        this.id = id;
+        this.nbrmaxpart = nbrmaxpart;
+        this.imageevent = imageevent;
+        this.eventname = eventname;
+        this.description = description;
+        this.eventdate = eventdate;
+        this.eventaddress = eventaddress;
+        this.nbr_going = nbr_going;
+    }
+    
+    
 
     public Events(int aInt, int aInt0, String string, String string0, String string1, String string2, int aInt1, int aInt2, int aInt3) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -121,11 +135,11 @@ public class Events {
         this.description = description;
     }
 
-    public LocalDate getEventdate() {
+    public Date getEventdate() {
         return eventdate;
     }
 
-    public void setEventdate(LocalDate eventdate) {
+    public void setEventdate(Date eventdate) {
         this.eventdate = eventdate;
     }
 

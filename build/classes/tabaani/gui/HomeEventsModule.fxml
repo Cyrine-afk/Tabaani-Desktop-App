@@ -7,34 +7,34 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tabaani.gui.HomeEventsModuleController">
+<AnchorPane id="AnchorPane" prefHeight="764.0" prefWidth="1121.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tabaani.gui.HomeEventsModuleController">
    <children>
       <ImageView fx:id="tabaaniImg" fitHeight="39.0" fitWidth="117.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/Tabaani%20light%20bg.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="apolloImg" fitHeight="57.0" fitWidth="117.0" layoutX="493.0" layoutY="332.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="apolloImg" fitHeight="57.0" fitWidth="117.0" layoutX="1019.0" layoutY="693.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/logo%20white.png" />
          </image>
       </ImageView>
-      <Label layoutX="134.0" layoutY="67.0" text="Events Management" textFill="#074b9e">
+      <Label layoutX="394.0" layoutY="206.0" text="Events Management" textFill="#074b9e">
          <font>
             <Font size="37.0" />
          </font>
       </Label>
-      <Button fx:id="btnEvents" layoutX="242.0" layoutY="143.0" mnemonicParsing="false" onAction="#go_events_menu" prefHeight="47.0" prefWidth="117.0" text="Events " textFill="#074b9e">
+      <Button fx:id="btnEvents" layoutX="502.0" layoutY="282.0" mnemonicParsing="false" onAction="#go_events_menu" prefHeight="47.0" prefWidth="117.0" text="Events " textFill="#074b9e">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="btnThemes" layoutX="242.0" layoutY="208.0" mnemonicParsing="false" onAction="#go_themes_menu" prefHeight="47.0" prefWidth="117.0" text="Themes" textFill="#074b9e">
+      <Button fx:id="btnThemes" layoutX="502.0" layoutY="347.0" mnemonicParsing="false" onAction="#go_themes_menu" prefHeight="47.0" prefWidth="117.0" text="Themes" textFill="#074b9e">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="btnPart" layoutX="205.0" layoutY="274.0" mnemonicParsing="false" onAction="#go_part_menu" prefHeight="47.0" prefWidth="191.0" text="Events Participants" textFill="#074b9e">
+      <Button fx:id="btnPart" layoutX="465.0" layoutY="413.0" mnemonicParsing="false" onAction="#go_part_menu" prefHeight="47.0" prefWidth="191.0" text="Events Participants" textFill="#074b9e">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

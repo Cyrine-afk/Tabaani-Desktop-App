@@ -8,8 +8,6 @@ package tabaani.gui;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.Date;
-import java.time.LocalDate;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -53,10 +51,6 @@ public class LISTeventsController implements Initializable {
     @FXML
     private TableColumn<Events, String> adrE;
     @FXML
-    private TableColumn<Events, String> themeE;
-    @FXML
-    private TableColumn<Events, String> orgE;
-    @FXML
     private TableColumn<Events, String> nbrGoingE;
     @FXML
     private Button btnEdit;
@@ -66,8 +60,9 @@ public class LISTeventsController implements Initializable {
     ObservableList<Events> obList = FXCollections.observableArrayList();
     Connection cnx2;
     String query = null;
+    
     @FXML
-    private TableColumn<Events, String> dateE;
+    private TableColumn<Events, String> dateE = new TableColumn<>("eventdate");;
 
     /**
      * Initializes the controller class.
@@ -78,8 +73,8 @@ public class LISTeventsController implements Initializable {
         
         try {
             ResultSet rs = cnx2.createStatement().executeQuery("SELECT * FROM events");
-            LocalDate DateEvent = dateE.getValue();
-           
+            
+            
             while (rs.next()){
         
                 obList.add(new Events(
@@ -88,10 +83,9 @@ public class LISTeventsController implements Initializable {
                         rs.getString("imageevent"),
                         rs.getString("eventname"),
                         rs.getString("description"),
-                        rs.getLocalDate("eventdate"),
+                        rs.getDate("eventdate"),
                         rs.getString("eventaddress"),
-                        rs.getInt("eventtheme_id"),
-                        rs.getInt("org_id"),
+                        //rs.getObject("eventtheme_id", "themes"),
                         rs.getInt("nbr_going")));
                 tblThemes.setItems(obList);
             }
@@ -104,9 +98,8 @@ public class LISTeventsController implements Initializable {
         maxE.setCellValueFactory(new PropertyValueFactory<>("nbrmaxpart"));
         picE.setCellValueFactory(new PropertyValueFactory<>("imageevent"));
         descE.setCellValueFactory(new PropertyValueFactory<>("description"));
+        dateE.setCellValueFactory(new PropertyValueFactory<>("eventdate"));
         adrE.setCellValueFactory(new PropertyValueFactory<>("eventaddress"));
-        themeE.setCellValueFactory(new PropertyValueFactory<>("eventthem_id"));
-        orgE.setCellValueFactory(new PropertyValueFactory<>("org_id"));
         nbrGoingE.setCellValueFactory(new PropertyValueFactory<>("nbr_going"));
     }    
 

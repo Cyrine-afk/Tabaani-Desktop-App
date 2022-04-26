@@ -7,25 +7,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="tabaani.gui.EventsMenuController">
+<AnchorPane id="AnchorPane" prefHeight="764.0" prefWidth="1121.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tabaani.gui.EventsMenuController">
    <children>
-      <ImageView fx:id="logoImg" fitHeight="42.0" fitWidth="121.0" layoutX="465.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="logoImg" fitHeight="42.0" fitWidth="121.0" layoutX="986.0" layoutY="711.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/Tabaani%20light%20bg.png" />
          </image>
       </ImageView>
-      <Label layoutX="142.0" layoutY="80.0" text="Manage you events here !" textFill="#074b9e">
+      <Label layoutX="403.0" layoutY="217.0" text="Manage you events here !" textFill="#074b9e">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <Button fx:id="btnAddE" layoutX="206.0" layoutY="166.0" mnemonicParsing="false" onAction="#go_addE" prefHeight="46.0" prefWidth="188.0" text="Add Event" textFill="#25bf4c">
+      <Button fx:id="btnAddE" layoutX="467.0" layoutY="314.0" mnemonicParsing="false" onAction="#go_addE" prefHeight="46.0" prefWidth="188.0" text="Add Event" textFill="#25bf4c">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </Button>
-      <Button fx:id="btnListE" layoutX="206.0" layoutY="232.0" mnemonicParsing="false" onAction="#go_listE" prefHeight="46.0" prefWidth="188.0" text="List Events" textFill="#25bf4c">
+      <Button fx:id="btnListE" layoutX="467.0" layoutY="396.0" mnemonicParsing="false" onAction="#go_listE" prefHeight="46.0" prefWidth="188.0" text="List Events" textFill="#25bf4c">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
