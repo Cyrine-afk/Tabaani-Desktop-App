@@ -50,14 +50,14 @@ public class EventsCRUD {
             + "VALUES (?,?,?,?,?,?,?,?,?)"; //requete pré-compilée 
             
         try {
-            //Date Date_event = Date.valueOf(E.getEventdate());
+            Date Date_event = Date.valueOf(E.getEventdate());
             
             PreparedStatement pst = cnx2.prepareStatement(requete2); //pour les requetes dynamiiques + plus rapide que statement (temps d'execution)
             pst.setString(1, E.getEventname());
             pst.setInt(2, E.getNbrmaxpart());
             pst.setString(3, E.getImageevent());
             pst.setString(4, E.getDescription());
-            pst.setDate(5, E.getEventdate());
+            pst.setDate(5, Date_event);
             pst.setString(6, E.getEventaddress());
             pst.setString(7, E.getEventtheme_id().getThemename());
             pst.setString(8, E.getOrg_id().getLogin_user());
@@ -168,6 +168,27 @@ public class EventsCRUD {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+    
+    public boolean CheckEventByName(String name) {
+
+        boolean p = false;
+        try {
+
+            Statement pst = cnx2.createStatement();
+
+            ResultSet rs = pst.executeQuery("SELECT * FROM events WHERE eventname='" + name + "'");
+
+            while (rs.next()) {
+                 p=true;
+
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return p;
+
     }
 
     

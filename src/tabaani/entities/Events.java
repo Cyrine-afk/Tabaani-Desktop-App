@@ -18,7 +18,7 @@ public class Events {
     private String imageevent;
     private String eventname;
     private String description;
-    private Date eventdate;
+    private LocalDate eventdate;
     private String eventaddress;
     private Themes eventtheme_id;
     private User org_id;
@@ -28,7 +28,7 @@ public class Events {
     }
     
 
-    public Events(int id, int nbrmaxpart, String imageevent, String eventname, String description, Date eventdate, String eventaddress, Themes eventtheme_id, User org_id, int nbr_going) {
+    public Events(int id, int nbrmaxpart, String imageevent, String eventname, String description, LocalDate eventdate, String eventaddress, Themes eventtheme_id, User org_id, int nbr_going) {
         this.id = id;
         this.nbrmaxpart = nbrmaxpart;
         this.imageevent = imageevent;
@@ -41,7 +41,7 @@ public class Events {
         this.nbr_going = nbr_going;
     }
 
-    public Events(int nbrmaxpart, String imageevent, String eventname, String description, Date eventdate, String eventaddress, Themes eventtheme_id, User org_id, int nbr_going) {
+    public Events(int nbrmaxpart, String imageevent, String eventname, String description, LocalDate eventdate, String eventaddress, Themes eventtheme_id, User org_id, int nbr_going) {
         this.nbrmaxpart = nbrmaxpart;
         this.imageevent = imageevent;
         this.eventname = eventname;
@@ -53,7 +53,7 @@ public class Events {
         this.nbr_going = nbr_going;
     }
 
-    public Events(int nbrmaxpart, String eventname, String description, Date eventdate, String eventaddress, Themes eventtheme_id, User org_id, int nbr_going) {
+    public Events(int nbrmaxpart, String eventname, String description, LocalDate eventdate, String eventaddress, Themes eventtheme_id, User org_id, int nbr_going) {
         this.nbrmaxpart = nbrmaxpart;
         this.eventname = eventname;
         this.description = description;
@@ -76,7 +76,7 @@ public class Events {
         this.nbr_going = nbr_going;
     }
 
-    public Events(int id, int nbrmaxpart, String imageevent, String eventname, String description, Date eventdate, String eventaddress, int nbr_going) {
+    public Events(int id, int nbrmaxpart, String imageevent, String eventname, String description, LocalDate eventdate, String eventaddress, int nbr_going) {
         this.id = id;
         this.nbrmaxpart = nbrmaxpart;
         this.imageevent = imageevent;
@@ -135,11 +135,11 @@ public class Events {
         this.description = description;
     }
 
-    public Date getEventdate() {
+    public LocalDate getEventdate() {
         return eventdate;
     }
 
-    public void setEventdate(Date eventdate) {
+    public void setEventdate(LocalDate eventdate) {
         this.eventdate = eventdate;
     }
 

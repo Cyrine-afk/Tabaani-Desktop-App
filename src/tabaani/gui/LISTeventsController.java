@@ -75,7 +75,7 @@ public class LISTeventsController implements Initializable {
             ResultSet rs = cnx2.createStatement().executeQuery("SELECT * FROM events");
             
             
-            while (rs.next()){
+           /* while (rs.next()){
         
                 obList.add(new Events(
                         rs.getInt("id"),
@@ -89,7 +89,7 @@ public class LISTeventsController implements Initializable {
                         rs.getInt("nbr_going")));
                 tblThemes.setItems(obList);
             }
-            
+            */
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }

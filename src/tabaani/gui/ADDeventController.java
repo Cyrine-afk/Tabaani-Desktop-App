@@ -8,7 +8,9 @@ package tabaani.gui;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -31,8 +33,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javax.xml.bind.DatatypeConverter;
 import tabaani.entities.Events;
 import tabaani.entities.Themes;
+import tabaani.entities.User;
 import tabaani.services.EventsCRUD;
 import tabaani.services.ThemesCRUD;
 import tabaani.utils.MyConnection;
@@ -71,7 +75,7 @@ public class ADDeventController implements Initializable {
     
     private URL urll;
     private ResourceBundle rbb;
-    ThemesCRUD evt = new ThemesCRUD();
+    EventsCRUD evt = new EventsCRUD();
     ObservableList<Events> obList = FXCollections.observableArrayList();
     Connection cnx2 = MyConnection.getInstance().getCnx();
     String query = null;
@@ -79,6 +83,9 @@ public class ADDeventController implements Initializable {
     Events event = null;
     PreparedStatement preparedStatement = null ;
     private boolean update;
+    
+    List<Themes> myLst;
+    ThemesCRUD CC= new ThemesCRUD();
    
 
     /**
@@ -87,6 +94,8 @@ public class ADDeventController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        myLst = CC.afficherThemes();
+        
         //loadData();
         
     }    
@@ -94,40 +103,63 @@ public class ADDeventController implements Initializable {
     @FXML
     private void saveEvent(ActionEvent event) {
         
-        /*try {
+        try {
             String control ="";
             //controle de saisie    
             if (tfNameEvent.getText() == null || 
                 tfImgEvent.getText().trim().isEmpty() ||
-                nfMaxPEvent.getInt().trim().isEmpty() ||
-                tfImgEvent.getText().trim().isEmpty() ||
-                tfImgEvent.getText().trim().isEmpty() ||
-                tfImgEvent.getText().trim().isEmpty() ||
-                tfImgEvent.getText().trim().isEmpty() ||
-                tfImgEvent.getText().trim().isEmpty() ||
-                
-                ) {
-                control = "Make sure to fill all the fields";
-                Control.setText(control);  
+                nfMaxPEvent.getText().trim().isEmpty() ||
+                tfDescEvent.getText().trim().isEmpty() ||
+                dateEvent.getValue() == null ||
+                tfAdrEvent.getText().trim().isEmpty() ||
+                tfThemeEvent.getValue().isEmpty() ||
+                tfOrgEvent.getValue().isEmpty() ||
+                nfNbrGoingEvent.getText().trim().isEmpty() ) {
                 Alert a = new Alert(Alert.AlertType.ERROR, "Make sure to fill all the fields", ButtonType.OK);
                 a.show();
-            } else if (evt.CheckThemeByName(tfNameTheme.getText())) {
-                control += "\n Theme name already exists !";
-                Control.setText(control);
+            } else if (evt.CheckEventByName(tfNameEvent.getText())) {
                  Alert a1 = new Alert(Alert.AlertType.ERROR, "Theme name already exists !", ButtonType.OK);
                 a1.show();
-                tfNameTheme.setStyle("background-color: rgba(255,0,0,0.2);");
+                tfNameEvent.setStyle("background-color: rgba(255,0,0,0.2);");
             } else {
-                String name = tfNameTheme.getText();
-                String pic = tfPictureEvent.getText();
+                String name = tfNameEvent.getText();
+                String pic = tfImgEvent.getText();
+                
+                String Scapacite = nfMaxPEvent.getText();
+                int maxPart = DatatypeConverter.parseInt(Scapacite);
+                
+                String descr = tfDescEvent.getText();
+                LocalDate dateE = dateEvent.getValue();
+                String adrE  = tfAdrEvent.getText();  
+                
+                Themes C =new Themes();
+                String Categorie = tfThemeEvent.getValue();
+                C.setThemename(Categorie);
+                
+                User C2 =new User();
+                String OrgE = tfOrgEvent.getValue();
+                C2.setLogin_user(OrgE);                
+                
+                String SnbrCPart = nfNbrGoingEvent.getText();
+                int nbrCPart = DatatypeConverter.parseInt(SnbrCPart);
         
-                Themes t = new Themes(name, pic);
-                ThemesCRUD tcr = new ThemesCRUD();
-                tcr.ajouterTheme2(t);
+                Events t = new Events(
+                        maxPart, 
+                        pic,
+                        name,
+                        descr,
+                        dateE,
+                        adrE,
+                        C,
+                        C2,
+                        nbrCPart
+                );
+                EventsCRUD tcr = new EventsCRUD();
+                tcr.ajouterEvent2(t);
             }
         } catch (Exception ex) {
             System.out.println("Error: "+ex.getMessage());
-        }*/
+        }
         
     }
     
