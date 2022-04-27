@@ -10,6 +10,8 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -29,6 +31,7 @@ import javafx.scene.control.Control;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -86,7 +89,18 @@ public class ADDeventController implements Initializable {
     
     List<Themes> myLst;
     ThemesCRUD CC= new ThemesCRUD();
-   
+    
+    //Themes ComboBox
+    final ObservableList options = FXCollections.observableArrayList();
+    final ObservableList<Themes> data = FXCollections.observableArrayList();
+    TableView<Themes> table;
+    ResultSet rs = null;
+    
+    //Users ComboBox
+    final ObservableList options2 = FXCollections.observableArrayList();
+    final ObservableList<User> data2 = FXCollections.observableArrayList();
+    TableView<User> table2;
+    ResultSet rs2 = null;
 
     /**
      * Initializes the controller class.
@@ -96,7 +110,45 @@ public class ADDeventController implements Initializable {
         
         myLst = CC.afficherThemes();
         
-        //loadData();
+        //ComboBox Themes
+        options.clear();
+        try {
+            String query = "SELECT themename FROM themes ";
+            preparedStatement = cnx2.prepareStatement(query);
+            rs = preparedStatement.executeQuery();
+            
+            while(rs.next()){
+                options.add(rs.getString("themename"));
+            }
+            
+            preparedStatement.close();
+            rs.close();
+        } catch (SQLException ex) {
+            System.out.println("Error: "+ex.getMessage());
+        }
+        
+        tfThemeEvent.getItems().addAll(options);
+        
+        //ComboBox Users
+        options2.clear();
+        try {
+            String query = "SELECT login_user FROM user ";
+            preparedStatement = cnx2.prepareStatement(query);
+            rs2 = preparedStatement.executeQuery();
+            
+            while(rs2.next()){
+                options2.add(rs2.getString("login_user"));
+            }
+            
+            preparedStatement.close();
+            rs2.close();
+        } catch (SQLException ex) {
+            System.out.println("Error: "+ex.getMessage());
+        }
+        
+        tfOrgEvent.getItems().addAll(options2);
+               
+        
         
     }    
     
@@ -118,7 +170,7 @@ public class ADDeventController implements Initializable {
                 Alert a = new Alert(Alert.AlertType.ERROR, "Make sure to fill all the fields", ButtonType.OK);
                 a.show();
             } else if (evt.CheckEventByName(tfNameEvent.getText())) {
-                 Alert a1 = new Alert(Alert.AlertType.ERROR, "Theme name already exists !", ButtonType.OK);
+                 Alert a1 = new Alert(Alert.AlertType.ERROR, "Event name already exists !", ButtonType.OK);
                 a1.show();
                 tfNameEvent.setStyle("background-color: rgba(255,0,0,0.2);");
             } else {
@@ -162,6 +214,26 @@ public class ADDeventController implements Initializable {
         }
         
     }
+    
+    /*public void fillComboBox(){
+        options.clear();
+        try {
+            String query = "SELECT themename FROM themes ";
+            preparedStatement = cnx2.prepareStatement(query);
+            rs = preparedStatement.executeQuery();
+            
+            while(rs.next()){
+                options.add(rs.getString("themename"));
+            }
+            
+            preparedStatement.close();
+            rs.close();
+        } catch (SQLException ex) {
+            System.out.println("Error: "+ex.getMessage());
+        }        
+    }*/
+    
+    
     
     @FXML
     private void back(ActionEvent event) {
