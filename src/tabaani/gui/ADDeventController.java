@@ -188,6 +188,9 @@ public class ADDeventController implements Initializable {
                 String Categorie = tfThemeEvent.getValue();
                 C.setThemename(Categorie);
                 
+                
+                System.out.println(C.getThemename());
+                
                 User C2 =new User();
                 String OrgE = tfOrgEvent.getValue();
                 C2.setLogin_user(OrgE);                
@@ -202,10 +205,13 @@ public class ADDeventController implements Initializable {
                         descr,
                         dateE,
                         adrE,
-                        C,
-                        C2,
+                        C.getId()/*.getId()*/,
+                        C2/*.getId()*/,
                         nbrCPart
                 );
+                
+                
+                
                 EventsCRUD tcr = new EventsCRUD();
                 tcr.ajouterEvent2(t);
             }

@@ -46,6 +46,8 @@ public class EventsCRUD {
     }
     
     public void ajouterEvent2(Events E) {
+        System.out.println(E.getEventtheme_id());
+        
         String requete2 = "INSERT INTO events (eventname,nbrmaxpart,imageevent,description,eventdate,eventaddress,eventtheme_id,org_id,nbr_going) "
             + "VALUES (?,?,?,?,?,?,?,?,?)"; //requete pré-compilée 
             
@@ -59,8 +61,11 @@ public class EventsCRUD {
             pst.setString(4, E.getDescription());
             pst.setDate(5, Date_event);
             pst.setString(6, E.getEventaddress());
-            pst.setString(7, E.getEventtheme_id().getThemename());
-            pst.setString(8, E.getOrg_id().getLogin_user());
+            pst.setInt(7, E.getEventtheme_id());
+            
+            
+            
+            pst.setInt(8, E.getOrg_id().getId());
             pst.setInt(9, E.getNbr_going());
             
             
@@ -93,7 +98,7 @@ public class EventsCRUD {
         return eventsList;
     }
     
-    public Events FindEvent(int id) {
+    /*public Events FindEvent(int id) {
 
         Events p = new Events();
         try {
@@ -134,7 +139,7 @@ public class EventsCRUD {
         }
         
         return p;
-    }
+    }*/
     
     public void supprimerEvent(Events p) {
         try {
