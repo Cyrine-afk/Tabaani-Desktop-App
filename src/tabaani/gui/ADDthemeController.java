@@ -43,6 +43,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
+import nl.captcha.Captcha;
 import tabaani.entities.Themes;
 import tabaani.services.ThemesCRUD;
 import org.controlsfx.control.Notifications;
@@ -97,6 +98,14 @@ public class ADDthemeController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         Control.setVisible(false);
         
+        Captcha captcha = new Captcha.Builder(200, 50)
+           .addText()
+           .addBackground()
+           .addNoise()
+           .gimp()
+           .addBorder()
+           .build(); 
+        
         loadData();
         
     }     
@@ -135,15 +144,15 @@ public class ADDthemeController implements Initializable {
                 Control.setText(control);  
                 Alert a = new Alert(Alert.AlertType.ERROR, "Make sure to fill all the fields", ButtonType.OK);
                 a.show();
-                //notificationShow("Alert!",control);  
-                System.out.println("Alert!"+control);
+                notificationShow("Alert!",control);  
+                //System.out.println("Alert!"+control);
             } else if (evt.CheckThemeByName(tfNameTheme.getText())) {
                 control += "\n Theme name already exists !";
                 Control.setText(control);
                  Alert a1 = new Alert(Alert.AlertType.ERROR, "Theme name already exists !", ButtonType.OK);
                 a1.show();
-                //notificationShow("Alert!",control); 
-                System.out.println("Alert!"+control);
+                notificationShow("Alert!",control); 
+                //System.out.println("Alert!"+control);
                 tfNameTheme.setStyle("background-color: rgba(255,0,0,0.2);");
             } else {
                 String name = tfNameTheme.getText();
