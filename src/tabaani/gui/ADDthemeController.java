@@ -14,8 +14,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -43,6 +45,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
+import static jdk.nashorn.tools.ShellFunctions.input;
 import nl.captcha.Captcha;
 import tabaani.entities.Themes;
 import tabaani.services.ThemesCRUD;
@@ -107,6 +110,23 @@ public class ADDthemeController implements Initializable {
            .build(); 
         
         loadData();
+        
+        input.setLayoutX(100D);
+        input.setLayoutY(410D);
+        input.setPromptText("Rechercher ..");
+        input.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+               view.setPredicate(new Predicate<Item<Themes>>() {
+                    @Override
+                    public boolean test(Item<Themes> t) {
+
+                        boolean flag = t.getValue().getThemename().toLowerCase().contains(newValue.toLowerCase());
+                        return flag;
+                    }
+                });
+            }
+        });
         
     }     
 

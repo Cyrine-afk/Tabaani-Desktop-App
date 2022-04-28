@@ -139,4 +139,34 @@ public class ThemesCRUD {
 
     }
     
+    
+  public Themes FindThemeByName(String name) {
+
+        Themes p = new Themes();
+        try {
+
+            Statement pst = cnx2.createStatement();
+
+            ResultSet rs = pst.executeQuery("SELECT * FROM themes WHERE themename='" + name + "'");
+
+            while (rs.next()) {
+                /*Date dateaux = rs.getDate("date");
+                LocalDate date = dateaux.toLocalDate();*/
+                int id = rs.getInt(1);
+                String nom_theme = rs.getString("themename");
+                String img_theme = rs.getString("imagetheme");
+              
+                p.setId(id);
+                p.setImagetheme(nom_theme);
+                p.setImagetheme(img_theme);
+
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return p;
+
+    }
+    
 }
