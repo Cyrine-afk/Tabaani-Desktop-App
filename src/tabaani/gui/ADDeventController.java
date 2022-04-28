@@ -12,9 +12,16 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -31,11 +38,14 @@ import javafx.scene.control.Control;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Callback;
 import javax.xml.bind.DatatypeConverter;
 import tabaani.entities.Events;
 import tabaani.entities.Themes;
@@ -101,6 +111,27 @@ public class ADDeventController implements Initializable {
     final ObservableList<User> data2 = FXCollections.observableArrayList();
     TableView<User> table2;
     ResultSet rs2 = null;
+    @FXML
+    private TableView<Events> tblThemes;
+    @FXML
+    private TableColumn<Events, String> nameE;
+    @FXML
+    private TableColumn<Events, String> maxE;
+    @FXML
+    private TableColumn<Events, String> descE;
+    @FXML
+    private TableColumn<Events, String> dateE = new TableColumn<>("eventdate");
+    @FXML
+    private TableColumn<Events, String> adrE;
+    @FXML
+    private TableColumn<Events, String> nbrGoingE;
+    @FXML
+    private TableColumn<Events, String> themeT;
+    @FXML
+    private TableColumn<Events, String> hostE;
+    @FXML
+    private TableColumn<Events, String> editCol;
+    
 
     /**
      * Initializes the controller class.
@@ -148,9 +179,50 @@ public class ADDeventController implements Initializable {
         
         tfOrgEvent.getItems().addAll(options2);
                
+        //List Events
+        //loadData();
         
+    } 
+    
+    @FXML
+    private void refreshTable() {
         
-    }    
+        try {
+            obList.clear();
+            
+            ResultSet rs = cnx2.createStatement().executeQuery("SELECT * FROM events");
+            
+            DateTimeFormatter formatters = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+            dateE.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Events, String>, ObservableValue<String>>(){
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Events, String> param) {
+                return new SimpleStringProperty(param.getValue().getEventdate().format(formatters));
+            }
+        });
+            
+            while (rs.next()){
+                obList.add(new Events (
+                        rs.getInt("id"),
+                        rs.getInt("nbrmaxpart"),
+                        rs.getString("imageevent"),
+                        rs.getString("eventname"),
+                        rs.getString("description"),
+                        //rs.getDate("eventdate"),
+                        rs.getString("eventaddress"),
+                        rs.getInt("eventtheme_id"),
+                        rs.getInt("org_id"),
+                        rs.getInt("nbr_going")
+                ));
+                
+                tblThemes.setItems(obList);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ADDthemeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     
     @FXML
     private void saveEvent(ActionEvent event) {
@@ -254,6 +326,8 @@ public class ADDeventController implements Initializable {
             System.out.println("Error: "+ex.getMessage());
         }
     }
+
+    
 
     
 }
