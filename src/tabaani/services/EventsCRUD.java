@@ -21,7 +21,7 @@ import tabaani.utils.MyConnection;
 
 /**
  *
- * @author DELL
+ * @author DELL 
  */
 public class EventsCRUD {
     
