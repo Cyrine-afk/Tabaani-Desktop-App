@@ -19,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -62,6 +63,15 @@ import tabaani.entities.User;
 import tabaani.services.EventsCRUD;
 import tabaani.services.ThemesCRUD;
 import tabaani.utils.MyConnection;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import tabaani.utils.JavaMailUtil;
 
 /**
  * FXML Controller class
@@ -316,7 +326,7 @@ public class ADDeventController implements Initializable {
             System.out.println("Error: "+ex.getMessage());
         }
     }
-
+    
     private void loadData() {
         
         refreshTable();
@@ -346,6 +356,7 @@ public class ADDeventController implements Initializable {
 
                         FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
                         FontAwesomeIconView editIcon = new FontAwesomeIconView(FontAwesomeIcon.PENCIL_SQUARE);
+                        FontAwesomeIconView emailIcon = new FontAwesomeIconView(FontAwesomeIcon.SEND);
 
                         deleteIcon.setStyle(
                                 " -fx-cursor: hand ;"
@@ -357,7 +368,11 @@ public class ADDeventController implements Initializable {
                                 + "-glyph-size:28px;"
                                 + "-fx-fill:#00E676;"
                         );
-                        
+                        emailIcon.setStyle(
+                                " -fx-cursor: hand ;"
+                                + "-glyph-size:28px;"
+                                + "-fx-fill:#33a8ff;"
+                        );
                         
                         deleteIcon.setOnMouseClicked((MouseEvent mouseEvent) -> {
                             
@@ -373,7 +388,6 @@ public class ADDeventController implements Initializable {
                             }
                             
                         });
-                               
                                                 
                         editIcon.setOnMouseClicked((MouseEvent mouseEvent) -> {
                             
@@ -406,11 +420,24 @@ public class ADDeventController implements Initializable {
                             
                         });
                         
+                        emailIcon.setOnMouseClicked((MouseEvent mouseEvent) -> {
+                            
+                            try {
+                                
+                                JavaMailUtil.sendMail("cyrine1409@gmail.com");
+                                
+                            } catch (Exception ex) {
+                                Logger.getLogger(ADDthemeController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            
+                        });
+                        
 
-                        HBox managebtn = new HBox(editIcon, deleteIcon);
+                        HBox managebtn = new HBox(editIcon, deleteIcon, emailIcon);
                         managebtn.setStyle("-fx-alignment:center");
                         HBox.setMargin(deleteIcon, new Insets(2, 2, 0, 3));
                         HBox.setMargin(editIcon, new Insets(2, 3, 0, 2));
+                        HBox.setMargin(editIcon, new Insets(2, 4, 0, 3));
 
                         setGraphic(managebtn);
 

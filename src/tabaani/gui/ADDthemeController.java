@@ -39,12 +39,14 @@ import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
+import javafx.util.Duration;
 import static jdk.nashorn.tools.ShellFunctions.input;
 import nl.captcha.Captcha;
 import tabaani.entities.Themes;
@@ -94,12 +96,15 @@ public class ADDthemeController implements Initializable {
     
     //cnx2 = MyConnection.getInstance().getCnx();
 
+       
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Control.setVisible(false);
+        
+        loadData();
         
         /*Captcha captcha = new Captcha.Builder(200, 50)
            .addText()
@@ -109,7 +114,6 @@ public class ADDthemeController implements Initializable {
            .addBorder()
            .build(); */
         
-        loadData();
         
         /*input.setLayoutX(100D);
         input.setLayoutY(410D);
@@ -128,7 +132,20 @@ public class ADDthemeController implements Initializable {
             }
         });*/
         
-    }     
+    }   
+    
+    public void notificationShow() {
+        Image img = new Image("images/reverifier.png");
+                Notifications notificationBuilder = Notifications.create()
+                        .title("Theme Added")
+                        .text("Theme successfully added to database")
+                        .graphic(new ImageView(img)/*null*/)
+                        .hideAfter(Duration.seconds(5))
+                        .position(Pos.CENTER)
+                        .onAction((ActionEvent event1) -> {System.out.println("Clicked on notification");});
+                notificationBuilder.darkStyle();
+                notificationBuilder.show();
+    }
 
     @FXML
     private void refreshTable() {
@@ -171,7 +188,7 @@ public class ADDthemeController implements Initializable {
                 Control.setText(control);
                  Alert a1 = new Alert(Alert.AlertType.ERROR, "Theme name already exists !", ButtonType.OK);
                 a1.show();
-                notificationShow("Alert!",control); 
+                //notificationShow("Alert!",control); 
                 System.out.println("Alert!"+control);
                 //tfNameTheme.setStyle("background-color: rgba(255,0,0,0.2);");
             } else {
@@ -181,6 +198,8 @@ public class ADDthemeController implements Initializable {
                 Themes t = new Themes(name, pic);
                 ThemesCRUD tcr = new ThemesCRUD();
                 tcr.ajouterTheme2(t);
+                
+                notificationShow();
             }
         } catch (Exception ex) {
             System.out.println("Error: "+ex.getMessage());
@@ -202,20 +221,6 @@ public class ADDthemeController implements Initializable {
         }
     }
     
-    
-    public void notificationShow(String title,String message) {
-        Notifications notificationBuilder = Notifications.create()
-               .title(title).text(message).graphic(null).hideAfter(javafx.util.Duration.seconds(20))
-               .position(Pos.CENTER)
-               .onAction(new EventHandler<ActionEvent>(){
-                   public void handle(ActionEvent event)
-                   {    
-                       
-                       System.out.println("clicked ON ");
-               }});
-        notificationBuilder.show();
-    }
-
     
     private void loadData() {
         
@@ -241,7 +246,7 @@ public class ADDthemeController implements Initializable {
 
                         FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
                         FontAwesomeIconView editIcon = new FontAwesomeIconView(FontAwesomeIcon.PENCIL_SQUARE);
-
+                        
                         deleteIcon.setStyle(
                                 " -fx-cursor: hand ;"
                                 + "-glyph-size:28px;"
@@ -319,5 +324,7 @@ public class ADDthemeController implements Initializable {
         
         
     }
+
+    
     
 }
