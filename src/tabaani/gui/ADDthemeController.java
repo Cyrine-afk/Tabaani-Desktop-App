@@ -349,14 +349,13 @@ public class ADDthemeController implements Initializable {
 			});
 		});
         // Wrap the FilteredList in a SortedList. 
-		SortedList<Themes> sortedData = new SortedList<>(filteredData);
+	SortedList<Themes> sortedData = new SortedList<>(filteredData);
 		
-		// 4. Bind the SortedList comparator to the TableView comparator.
-		// 	  Otherwise, sorting the TableView would have no effect.
-		sortedData.comparatorProperty().bind(tbThemes.comparatorProperty());
+	// Bind the SortedList comparator to the TableView comparator, otherwise, sorting the TableView would have no effect.
+	sortedData.comparatorProperty().bind(tbThemes.comparatorProperty());
 		
-		// 5. Add sorted (and filtered) data to the table.
-		tbThemes.setItems(sortedData);
+	// Add sorted (and filtered) data to the table.
+	tbThemes.setItems(sortedData);
         
         
     }

@@ -71,6 +71,7 @@ import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.swing.JFileChooser;
 import tabaani.utils.JavaMailUtil;
 
 /**
@@ -455,6 +456,18 @@ public class ADDeventController implements Initializable {
         tblThemes.setItems(obList);
         
         
+    }
+
+    @FXML
+    private void print(MouseEvent event) {
+        
+        /*String path="";
+        JFileChooser j = new JFileChooser();
+        j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        //j.showSaveDialog(this);
+        int x=j.showSaveDialog(this);
+        
+        if (x==JFileChooser.)*/
     }
 
     

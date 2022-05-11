@@ -83,5 +83,6 @@
             <FontAwesomeIconView fill="#25bf4c" glyphName="REFRESH" onMouseClicked="#refreshTable" size="25" text="" textAlignment="CENTER" wrappingWidth="48.0" />
          </children>
       </HBox>
+      <FontAwesomeIconView fill="#25bf4c" glyphName="PRINT" layoutX="312.0" layoutY="328.0" onMouseClicked="#print" size="29" styleClass="btn" text="" />
     </children>        
 </AnchorPane>
