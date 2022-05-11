@@ -59,5 +59,12 @@
             <FontAwesomeIconView fill="#25bf4c" glyphName="REFRESH" onMouseClicked="#refreshTable" size="25" text="" textAlignment="CENTER" wrappingWidth="48.0" />
          </children>
       </HBox>
+      <TextField fx:id="filterField" layoutX="710.0" layoutY="206.0" prefHeight="31.0" prefWidth="355.0" />
+      <Label layoutX="633.0" layoutY="206.0" text="Search" textFill="#3c1bb2">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <FontAwesomeIconView fill="#3c1bb2" glyphName="SEARCH" layoutX="607.0" layoutY="229.0" size="20" />
    </children>
 </AnchorPane>
