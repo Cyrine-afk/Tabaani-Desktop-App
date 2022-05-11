@@ -32,6 +32,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -49,6 +50,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -56,6 +58,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
+import javafx.util.Duration;
 import javax.xml.bind.DatatypeConverter;
 import tabaani.entities.Events;
 import tabaani.entities.Themes;
@@ -72,6 +75,7 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.swing.JFileChooser;
+import org.controlsfx.control.Notifications;
 import tabaani.utils.JavaMailUtil;
 
 /**
@@ -204,6 +208,19 @@ public class ADDeventController implements Initializable {
         
     } 
     
+    public void notificationShow() {
+        Image img = new Image("images/reverifier.png");
+                Notifications notificationBuilder = Notifications.create()
+                        .title("Event Added")
+                        .text("Event successfully added to database")
+                        .graphic(new ImageView(img)/*null*/)
+                        .hideAfter(Duration.seconds(5))
+                        .position(Pos.CENTER)
+                        .onAction((ActionEvent event1) -> {System.out.println("Clicked on notification");});
+                notificationBuilder.darkStyle();
+                notificationBuilder.show();
+    }
+    
     @FXML
     private void refreshTable() {
         
@@ -307,6 +324,7 @@ public class ADDeventController implements Initializable {
                 
                 EventsCRUD tcr = new EventsCRUD();
                 tcr.ajouterEvent2(t);
+                notificationShow();
             }
         } catch (Exception ex) {
             System.out.println("Error: "+ex.getMessage());
@@ -467,7 +485,11 @@ public class ADDeventController implements Initializable {
         //j.showSaveDialog(this);
         int x=j.showSaveDialog(this);
         
-        if (x==JFileChooser.)*/
+        if (x==JFileChooser.APPROVE_OPTION) {
+            path=j.getSelectedFile().getPath();
+        }*/
+        
+        
     }
 
     
