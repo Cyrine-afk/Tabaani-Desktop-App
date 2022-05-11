@@ -8,26 +8,22 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tabaani.gui.LISTpartEventController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tabaani.gui.LISTpartEventController">
     <children>
-        <ImageView fx:id="logoImg" fitHeight="43.0" fitWidth="142.0" layoutX="450.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="logoImg" fitHeight="43.0" fitWidth="142.0" layoutX="646.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/Tabaani%20light%20bg.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="&lt; Back" textFill="#000b46">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Button>
-      <Label layoutX="159.0" layoutY="28.0" text="List of events participants " textFill="#3c1bb2">
+      <Label layoutX="355.0" layoutY="116.0" text="List of events participants " textFill="#3c1bb2">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
       </Label>
-      <TableView fx:id="tblPartE" layoutX="12.0" layoutY="72.0" prefHeight="257.0" prefWidth="578.0">
+      <TableView fx:id="tblPartE" layoutX="208.0" layoutY="160.0" prefHeight="257.0" prefWidth="578.0">
         <columns>
           <TableColumn fx:id="eventP" prefWidth="75.0" text="Event Name" />
             <TableColumn fx:id="UserP" prefWidth="75.0" text="Participant Login" />
@@ -39,14 +35,25 @@
             <Insets />
          </opaqueInsets>
       </TableView>
-      <Button fx:id="btnEdit" layoutX="26.0" layoutY="349.0" mnemonicParsing="false" onAction="#go_editT" prefHeight="34.0" prefWidth="69.0" text="Edit" textFill="#25bf4c">
+      <Button fx:id="btnEdit" layoutX="222.0" layoutY="437.0" mnemonicParsing="false" onAction="#go_editT" prefHeight="34.0" prefWidth="69.0" text="Edit" textFill="#25bf4c">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="btnDelete" layoutX="104.0" layoutY="349.0" mnemonicParsing="false" onAction="#go_deleteT" prefHeight="37.0" prefWidth="76.0" text="Delete" textFill="#25bf4c">
+      <Button fx:id="btnDelete" layoutX="300.0" layoutY="437.0" mnemonicParsing="false" onAction="#go_deleteT" prefHeight="37.0" prefWidth="76.0" text="Delete" textFill="#25bf4c">
          <font>
             <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#01122c" height="605.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <ImageView fitHeight="91.0" fitWidth="183.0" layoutX="9.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/white.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnBack" layoutY="530.0" mnemonicParsing="false" onAction="#back" prefHeight="49.0" prefWidth="200.0" style="-fx-background-color: #01122c;" text="&lt; Back" textFill="#c2bfe0">
+         <font>
+            <Font size="23.0" />
          </font>
       </Button>
     </children>

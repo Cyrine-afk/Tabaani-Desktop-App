@@ -27,15 +27,13 @@ import javafx.scene.image.ImageView;
 public class HomeEventsModuleController implements Initializable {
 
     @FXML
-    private ImageView tabaaniImg;  
-    @FXML
-    private ImageView apolloImg;
-    @FXML
     private Button btnEvents;
     @FXML
     private Button btnThemes;
     @FXML
     private Button btnPart;
+    @FXML
+    private Button btnRetour;
 
     /**
      * Initializes the controller class.
@@ -85,6 +83,10 @@ public class HomeEventsModuleController implements Initializable {
         } catch (IOException ex) {
             System.out.println("Error: "+ex.getMessage());
         }
+    }
+
+    @FXML
+    private void Retour(ActionEvent event) {
     }
     
 }

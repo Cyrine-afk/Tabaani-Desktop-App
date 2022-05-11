@@ -99,6 +99,8 @@ public class ADDthemeController implements Initializable {
     private boolean update;
     
     //cnx2 = MyConnection.getInstance().getCnx();
+    @FXML
+    private Button btnBack1;
 
        
     /**

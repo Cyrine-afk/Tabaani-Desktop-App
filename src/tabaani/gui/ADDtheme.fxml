@@ -10,61 +10,73 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="764.0" prefWidth="1121.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tabaani.gui.ADDthemeController">
+<AnchorPane id="AnchorPane" prefHeight="764.0" prefWidth="1335.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tabaani.gui.ADDthemeController">
    <children>
-      <Label layoutX="49.0" layoutY="55.0" text="Add a theme" textFill="#3c1bb2">
+      <Label layoutX="263.0" layoutY="55.0" text="Add a theme" textFill="#3c1bb2">
          <font>
             <Font size="29.0" />
          </font>
       </Label>
-      <Label layoutX="129.0" layoutY="124.0" text="Name" />
-      <Label layoutX="479.0" layoutY="124.0" text="Picture" />
-      <TextField fx:id="tfNameTheme" layoutX="215.0" layoutY="119.0" />
-      <TextField fx:id="tfPictureEvent" layoutX="565.0" layoutY="119.0" />
-      <Button fx:id="btnSave" layoutX="816.0" layoutY="113.0" mnemonicParsing="false" onAction="#saveTheme" prefHeight="43.0" prefWidth="77.0" text="Save" textFill="#25bf4c">
+      <Label layoutX="343.0" layoutY="124.0" text="Name" />
+      <Label layoutX="693.0" layoutY="124.0" text="Picture" />
+      <TextField fx:id="tfNameTheme" layoutX="429.0" layoutY="119.0" />
+      <TextField fx:id="tfPictureEvent" layoutX="779.0" layoutY="119.0" />
+      <Button fx:id="btnSave" layoutX="1030.0" layoutY="113.0" mnemonicParsing="false" onAction="#saveTheme" prefHeight="43.0" prefWidth="77.0" text="Save" textFill="#25bf4c">
          <font>
             <Font name="System Bold" size="19.0" />
          </font></Button>
-      <ImageView fx:id="logoImg" fitHeight="43.0" fitWidth="142.0" layoutX="971.0" layoutY="707.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="logoImg" fitHeight="43.0" fitWidth="142.0" layoutX="1185.0" layoutY="707.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/Tabaani%20light%20bg.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="&lt; Back" textFill="#000b46">
+      <Button fx:id="btnBack" layoutX="228.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="&lt; Back" textFill="#000b46">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-       <Label fx:id="Control" alignment="TOP_LEFT" layoutY="710.0" prefHeight="54.0" prefWidth="166.0" style="-fx-background-color: rgba(255,0,0,0.2);" text="Label" textFill="#fcfcfc">
+       <Label fx:id="Control" alignment="TOP_LEFT" layoutX="214.0" layoutY="710.0" prefHeight="54.0" prefWidth="166.0" style="-fx-background-color: rgba(255,0,0,0.2);" text="Label" textFill="#fcfcfc">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="49.0" layoutY="200.0" text="List your themes" textFill="#3c1bb2">
+      <Label layoutX="263.0" layoutY="200.0" text="List your themes" textFill="#3c1bb2">
          <font>
             <Font size="29.0" />
          </font>
       </Label>
-      <TableView fx:id="tbThemes" layoutX="19.0" layoutY="251.0" prefHeight="432.0" prefWidth="1080.0">
+      <TableView fx:id="tbThemes" layoutX="233.0" layoutY="251.0" prefHeight="432.0" prefWidth="1080.0">
         <columns>
           <TableColumn fx:id="nameTh" prefWidth="366.0" text="Name" />
           <TableColumn fx:id="picTh" minWidth="0.0" prefWidth="431.0" text="Picture" />
             <TableColumn fx:id="editCol" minWidth="0.0" prefWidth="251.0" text="Actions" />
         </columns>
       </TableView>
-      <HBox alignment="CENTER" layoutX="277.0" layoutY="206.0" prefHeight="31.0" prefWidth="27.0">
+      <HBox alignment="CENTER" layoutX="491.0" layoutY="206.0" prefHeight="31.0" prefWidth="27.0">
          <children>
             <FontAwesomeIconView fill="#25bf4c" glyphName="REFRESH" onMouseClicked="#refreshTable" size="25" text="" textAlignment="CENTER" wrappingWidth="48.0" />
          </children>
       </HBox>
-      <TextField fx:id="filterField" layoutX="710.0" layoutY="206.0" prefHeight="31.0" prefWidth="355.0" />
-      <Label layoutX="633.0" layoutY="206.0" text="Search" textFill="#3c1bb2">
+      <TextField fx:id="filterField" layoutX="924.0" layoutY="206.0" prefHeight="31.0" prefWidth="355.0" />
+      <Label layoutX="847.0" layoutY="206.0" text="Search" textFill="#3c1bb2">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <FontAwesomeIconView fill="#3c1bb2" glyphName="SEARCH" layoutX="607.0" layoutY="229.0" size="20" />
+      <FontAwesomeIconView fill="#3c1bb2" glyphName="SEARCH" layoutX="821.0" layoutY="229.0" size="20" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#01122c" height="785.0" layoutX="-4.0" stroke="BLACK" strokeType="INSIDE" width="224.0" />
+      <ImageView fitHeight="91.0" fitWidth="183.0" layoutX="23.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/white.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnBack1" layoutX="15.0" layoutY="443.0" mnemonicParsing="false" onAction="#back" prefHeight="49.0" prefWidth="200.0" style="-fx-background-color: #01122c;" text="&lt; Back" textFill="#c2bfe0">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -14,53 +14,49 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="764.0" prefWidth="1121.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tabaani.gui.ADDeventController">
+<AnchorPane id="AnchorPane" prefHeight="764.0" prefWidth="1335.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tabaani.gui.ADDeventController">
     <children>
-        <Label layoutX="49.0" layoutY="45.0" text="Add an event" textFill="#3c1bb2">
+        <Label layoutX="263.0" layoutY="45.0" text="Add an event" textFill="#3c1bb2">
          <font>
             <Font size="29.0" />
          </font>
       </Label>
-      <Label layoutX="43.0" layoutY="105.0" text="Name" />
-      <Label layoutX="382.0" layoutY="105.0" text="Max Participants" />
-      <TextField fx:id="tfNameEvent" layoutX="103.0" layoutY="100.0" prefHeight="31.0" prefWidth="218.0" />
-      <Button fx:id="btnSave" layoutX="1017.0" layoutY="275.0" mnemonicParsing="false" onAction="#saveEvent" prefHeight="43.0" prefWidth="77.0" text="Save" textFill="#3c1bb2">
+      <Label layoutX="257.0" layoutY="105.0" text="Name" />
+      <Label layoutX="596.0" layoutY="105.0" text="Max Participants" />
+      <TextField fx:id="tfNameEvent" layoutX="317.0" layoutY="100.0" prefHeight="31.0" prefWidth="218.0" />
+      <Button fx:id="btnSave" layoutX="1231.0" layoutY="275.0" mnemonicParsing="false" onAction="#saveEvent" prefHeight="43.0" prefWidth="77.0" text="Save" textFill="#3c1bb2">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <ImageView fx:id="logoImg" fitHeight="43.0" fitWidth="142.0" layoutX="971.0" layoutY="707.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="logoImg" fitHeight="43.0" fitWidth="142.0" layoutX="1185.0" layoutY="707.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/Tabaani%20light%20bg.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="&lt; Back" textFill="#000b46">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Button>
-      <Label layoutX="798.0" layoutY="105.0" text="Picture" />
-      <TextField fx:id="tfImgEvent" layoutX="876.0" layoutY="100.0" prefHeight="31.0" prefWidth="218.0" />
-      <TextField fx:id="nfMaxPEvent" layoutX="518.0" layoutY="100.0" prefHeight="31.0" prefWidth="218.0" />
-      <Label layoutX="17.0" layoutY="216.0" text="Description" />
-      <TextArea fx:id="tfDescEvent" layoutX="103.0" layoutY="214.0" prefHeight="47.0" prefWidth="218.0" />
-      <Label layoutX="47.0" layoutY="157.0" text="Date" />
-      <DatePicker fx:id="dateEvent" layoutX="103.0" layoutY="152.0" />
-      <Label layoutX="410.0" layoutY="157.0" text="Address" />
-      <TextField fx:id="tfAdrEvent" layoutX="518.0" layoutY="152.0" prefHeight="31.0" prefWidth="218.0" />
-      <Label layoutX="415.0" layoutY="216.0" text="Theme" />
-      <ComboBox fx:id="tfThemeEvent" layoutX="518.0" layoutY="211.0" prefHeight="31.0" prefWidth="218.0" />
-      <Label layoutX="786.0" layoutY="157.0" text="Nbr Going" />
-      <TextField fx:id="nfNbrGoingEvent" layoutX="876.0" layoutY="152.0" prefHeight="31.0" prefWidth="218.0" />
-      <Label layoutX="789.0" layoutY="216.0" text="Organizer" />
-      <ComboBox fx:id="tfOrgEvent" layoutX="876.0" layoutY="211.0" prefHeight="31.0" prefWidth="218.0" />
-      <Label layoutX="43.0" layoutY="297.0" text="List your events" textFill="#3c1bb2">
+      <Label layoutX="1012.0" layoutY="105.0" text="Picture" />
+      <TextField fx:id="tfImgEvent" layoutX="1090.0" layoutY="100.0" prefHeight="31.0" prefWidth="218.0" />
+      <TextField fx:id="nfMaxPEvent" layoutX="732.0" layoutY="100.0" prefHeight="31.0" prefWidth="218.0" />
+      <Label layoutX="231.0" layoutY="216.0" text="Description" />
+      <TextArea fx:id="tfDescEvent" layoutX="317.0" layoutY="214.0" prefHeight="47.0" prefWidth="218.0" />
+      <Label layoutX="261.0" layoutY="157.0" text="Date" />
+      <DatePicker fx:id="dateEvent" layoutX="317.0" layoutY="152.0" />
+      <Label layoutX="624.0" layoutY="157.0" text="Address" />
+      <TextField fx:id="tfAdrEvent" layoutX="732.0" layoutY="152.0" prefHeight="31.0" prefWidth="218.0" />
+      <Label layoutX="629.0" layoutY="216.0" text="Theme" />
+      <ComboBox fx:id="tfThemeEvent" layoutX="732.0" layoutY="211.0" prefHeight="31.0" prefWidth="218.0" />
+      <Label layoutX="1000.0" layoutY="157.0" text="Nbr Going" />
+      <TextField fx:id="nfNbrGoingEvent" layoutX="1090.0" layoutY="152.0" prefHeight="31.0" prefWidth="218.0" />
+      <Label layoutX="1003.0" layoutY="216.0" text="Organizer" />
+      <ComboBox fx:id="tfOrgEvent" layoutX="1090.0" layoutY="211.0" prefHeight="31.0" prefWidth="218.0" />
+      <Label layoutX="257.0" layoutY="297.0" text="List your events" textFill="#3c1bb2">
          <font>
             <Font size="29.0" />
          </font>
       </Label>
-      <TableView fx:id="tblThemes" layoutX="35.0" layoutY="358.0" prefHeight="321.0" prefWidth="1054.0">
+      <TableView fx:id="tblThemes" layoutX="249.0" layoutY="358.0" prefHeight="321.0" prefWidth="1054.0">
          <columns>
             <TableColumn fx:id="nameE" prefWidth="75.0" text="Name" />
             <TableColumn fx:id="maxE" prefWidth="75.0" text="Max Particiants" />
@@ -78,11 +74,22 @@
             <Insets />
          </opaqueInsets>
       </TableView>
-      <HBox alignment="CENTER" layoutX="259.0" layoutY="303.0" prefHeight="31.0" prefWidth="27.0">
+      <HBox alignment="CENTER" layoutX="473.0" layoutY="303.0" prefHeight="31.0" prefWidth="27.0">
          <children>
             <FontAwesomeIconView fill="#25bf4c" glyphName="REFRESH" onMouseClicked="#refreshTable" size="25" text="" textAlignment="CENTER" wrappingWidth="48.0" />
          </children>
       </HBox>
-      <FontAwesomeIconView fill="#25bf4c" glyphName="PRINT" layoutX="312.0" layoutY="328.0" onMouseClicked="#print" size="29" styleClass="btn" text="" />
+      <FontAwesomeIconView fill="#25bf4c" glyphName="PRINT" layoutX="526.0" layoutY="328.0" onMouseClicked="#print" size="29" styleClass="btn" text="" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#01122c" height="779.0" layoutX="-8.0" layoutY="-4.0" stroke="BLACK" strokeType="INSIDE" width="218.0" />
+      <ImageView fitHeight="91.0" fitWidth="183.0" layoutX="13.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/white.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnBack" layoutX="5.0" layoutY="433.0" mnemonicParsing="false" onAction="#back" prefHeight="49.0" prefWidth="200.0" style="-fx-background-color: #01122c;" text="&lt; Back" textFill="#c2bfe0">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Button>
     </children>        
 </AnchorPane>

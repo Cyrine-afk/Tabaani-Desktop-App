@@ -5,38 +5,40 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="764.0" prefWidth="1121.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tabaani.gui.HomeEventsModuleController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tabaani.gui.HomeEventsModuleController">
    <children>
-      <ImageView fx:id="tabaaniImg" fitHeight="39.0" fitWidth="117.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../images/Tabaani%20light%20bg.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="apolloImg" fitHeight="57.0" fitWidth="117.0" layoutX="1019.0" layoutY="693.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../images/logo%20white.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="394.0" layoutY="206.0" text="Events Management" textFill="#074b9e">
+      <Label layoutX="318.0" layoutY="176.0" text="Events Management" textFill="#074b9e">
          <font>
             <Font size="37.0" />
          </font>
       </Label>
-      <Button fx:id="btnEvents" layoutX="502.0" layoutY="282.0" mnemonicParsing="false" onAction="#go_events_menu" prefHeight="47.0" prefWidth="117.0" text="Events " textFill="#074b9e">
+      <Button fx:id="btnEvents" layoutX="426.0" layoutY="252.0" mnemonicParsing="false" onAction="#go_events_menu" prefHeight="47.0" prefWidth="117.0" text="Events " textFill="#074b9e">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="btnThemes" layoutX="502.0" layoutY="347.0" mnemonicParsing="false" onAction="#go_themes_menu" prefHeight="47.0" prefWidth="117.0" text="Themes" textFill="#074b9e">
+      <Button fx:id="btnThemes" layoutX="426.0" layoutY="317.0" mnemonicParsing="false" onAction="#go_themes_menu" prefHeight="47.0" prefWidth="117.0" text="Themes" textFill="#074b9e">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="btnPart" layoutX="465.0" layoutY="413.0" mnemonicParsing="false" onAction="#go_part_menu" prefHeight="47.0" prefWidth="191.0" text="Events Participants" textFill="#074b9e">
+      <Button fx:id="btnPart" layoutX="389.0" layoutY="383.0" mnemonicParsing="false" onAction="#go_part_menu" prefHeight="47.0" prefWidth="191.0" text="Events Participants" textFill="#074b9e">
          <font>
             <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#01122c" height="605.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <ImageView fitHeight="91.0" fitWidth="183.0" layoutX="8.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/white.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnRetour" layoutY="542.0" mnemonicParsing="false" onAction="#Retour" prefHeight="49.0" prefWidth="200.0" style="-fx-background-color: #01122c;" text="Retour" textFill="#c2bfe0">
+         <font>
+            <Font size="23.0" />
          </font>
       </Button>
    </children>
