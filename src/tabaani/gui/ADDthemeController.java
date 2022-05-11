@@ -107,9 +107,9 @@ public class ADDthemeController implements Initializable {
            .addNoise()
            .gimp()
            .addBorder()
-           .build(); 
+           .build(); */
         
-        loadData();*/
+        loadData();
         
         /*input.setLayoutX(100D);
         input.setLayoutY(410D);
@@ -190,7 +190,7 @@ public class ADDthemeController implements Initializable {
 
     @FXML
     private void back(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ThemesMenu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeEventsModule.fxml"));
         
         try {
             Parent root = loader.load();

@@ -5,6 +5,8 @@
  */
 package tabaani.gui;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -28,7 +30,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -38,13 +42,18 @@ import javafx.scene.control.Control;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import javax.xml.bind.DatatypeConverter;
 import tabaani.entities.Events;
@@ -120,8 +129,6 @@ public class ADDeventController implements Initializable {
     @FXML
     private TableColumn<Events, String> descE;
     @FXML
-    private TableColumn<Events, String> dateE = new TableColumn<>("eventdate");
-    @FXML
     private TableColumn<Events, String> adrE;
     @FXML
     private TableColumn<Events, String> nbrGoingE;
@@ -140,6 +147,8 @@ public class ADDeventController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         myLst = CC.afficherThemes();
+        
+        loadData();
         
         //ComboBox Themes
         options.clear();
@@ -192,14 +201,14 @@ public class ADDeventController implements Initializable {
             
             ResultSet rs = cnx2.createStatement().executeQuery("SELECT * FROM events");
             
-            DateTimeFormatter formatters = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            /*DateTimeFormatter formatters = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
             dateE.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Events, String>, ObservableValue<String>>(){
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Events, String> param) {
                 return new SimpleStringProperty(param.getValue().getEventdate().format(formatters));
             }
-        });
+        });*/
             
             while (rs.next()){
                 obList.add(new Events (
@@ -208,7 +217,8 @@ public class ADDeventController implements Initializable {
                         rs.getString("imageevent"),
                         rs.getString("eventname"),
                         rs.getString("description"),
-                        //rs.getDate("eventdate"),
+                        //2022-03-20,
+                        //rs.getDate(query),
                         rs.getString("eventaddress"),
                         rs.getInt("eventtheme_id"),
                         rs.getInt("org_id"),
@@ -278,7 +288,7 @@ public class ADDeventController implements Initializable {
                         dateE,
                         adrE,
                         C.getId()/*.getId()*/,
-                        C2/*.getId()*/,
+                        C2.getId()/*.getId()*/,
                         nbrCPart
                 );
                 
@@ -293,29 +303,9 @@ public class ADDeventController implements Initializable {
         
     }
     
-    /*public void fillComboBox(){
-        options.clear();
-        try {
-            String query = "SELECT themename FROM themes ";
-            preparedStatement = cnx2.prepareStatement(query);
-            rs = preparedStatement.executeQuery();
-            
-            while(rs.next()){
-                options.add(rs.getString("themename"));
-            }
-            
-            preparedStatement.close();
-            rs.close();
-        } catch (SQLException ex) {
-            System.out.println("Error: "+ex.getMessage());
-        }        
-    }*/
-    
-    
-    
     @FXML
     private void back(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("EventsMenu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeEventsModule.fxml"));
         
         try {
             Parent root = loader.load();
@@ -327,7 +317,118 @@ public class ADDeventController implements Initializable {
         }
     }
 
-    
+    private void loadData() {
+        
+        refreshTable();
+           
+        nameE.setCellValueFactory(new PropertyValueFactory<>("eventname"));
+        maxE.setCellValueFactory(new PropertyValueFactory<>("nbrmaxpart"));
+        descE.setCellValueFactory(new PropertyValueFactory<>("description"));
+        adrE.setCellValueFactory(new PropertyValueFactory<>("eventaddress"));
+        nbrGoingE.setCellValueFactory(new PropertyValueFactory<>("nbr_going"));
+        themeT.setCellValueFactory(new PropertyValueFactory<>("eventtheme_id"));
+        hostE.setCellValueFactory(new PropertyValueFactory<>("org_id"));
+        
+        
+        //add cell of button edit 
+         Callback<TableColumn<Events, String>, TableCell<Events, String>> cellFoctory = (TableColumn<Events, String> param) -> {
+            // make cell containing buttons
+            final TableCell<Events, String> cell = new TableCell<Events, String>() {
+                @Override
+                public void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    //that cell created only on non-empty rows
+                    if (empty) {
+                        setGraphic(null);
+                        setText(null);
+
+                    } else {
+
+                        FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
+                        FontAwesomeIconView editIcon = new FontAwesomeIconView(FontAwesomeIcon.PENCIL_SQUARE);
+
+                        deleteIcon.setStyle(
+                                " -fx-cursor: hand ;"
+                                + "-glyph-size:28px;"
+                                + "-fx-fill:#ff1744;"
+                        );
+                        editIcon.setStyle(
+                                " -fx-cursor: hand ;"
+                                + "-glyph-size:28px;"
+                                + "-fx-fill:#00E676;"
+                        );
+                        
+                        
+                        deleteIcon.setOnMouseClicked((MouseEvent mouseEvent) -> {
+                            
+                            try {
+                                event = tblThemes.getSelectionModel().getSelectedItem();
+                                query = "DELETE FROM events WHERE id  ="+event.getId();
+                                preparedStatement = cnx2.prepareStatement(query);
+                                preparedStatement.execute();
+                                refreshTable();
+                                
+                            } catch (SQLException ex) {
+                                Logger.getLogger(ADDthemeController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            
+                        });
+                               
+                                                
+                        editIcon.setOnMouseClicked((MouseEvent mouseEvent) -> {
+                            
+                            event = tblThemes.getSelectionModel().getSelectedItem();
+                            FXMLLoader loader = new FXMLLoader ();
+                            loader.setLocation(getClass().getResource("/tabaani/gui/UPDATEtheme.fxml"));
+                            try {
+                                loader.load();    
+                            } catch (IOException ex) {
+                                Logger.getLogger(ADDthemeController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            
+                            UPDATEthemeController updateThController = loader.getController();
+                            updateThController.setUpdate(true);
+                            /*updateThController.setTextField(
+                                    event.getId(),
+                                    event.getNbrmaxpart(),
+                                    event.getDescription(),
+                                    event.getEventdate().toString(),
+                                    event.getEventaddress(),
+                                    event.getNbr_going(),
+                                    event.getEventtheme_id(),
+                                    event.getOrg_id()
+                            );*/
+                            Parent parent = loader.getRoot();
+                            Stage stage = new Stage();
+                            stage.setScene(new Scene(parent));
+                            stage.initStyle(StageStyle.UTILITY);
+                            stage.show();
+                            
+                        });
+                        
+
+                        HBox managebtn = new HBox(editIcon, deleteIcon);
+                        managebtn.setStyle("-fx-alignment:center");
+                        HBox.setMargin(deleteIcon, new Insets(2, 2, 0, 3));
+                        HBox.setMargin(editIcon, new Insets(2, 3, 0, 2));
+
+                        setGraphic(managebtn);
+
+                        setText(null);
+
+                    }
+                }
+
+            };
+
+            return cell;
+        };
+         
+        editCol.setCellFactory(cellFoctory);
+        tblThemes.setItems(obList);
+        
+        
+    }
 
     
 }

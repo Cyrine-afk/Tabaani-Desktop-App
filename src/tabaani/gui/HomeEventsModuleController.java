@@ -47,7 +47,7 @@ public class HomeEventsModuleController implements Initializable {
 
     @FXML
     private void go_events_menu(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("EventsMenu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ADDevent.fxml"));
         
         try {
             Parent root = loader.load();
@@ -61,7 +61,7 @@ public class HomeEventsModuleController implements Initializable {
 
     @FXML
     private void go_themes_menu(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ThemesMenu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ADDtheme.fxml"));
         
         try {
             Parent root = loader.load();

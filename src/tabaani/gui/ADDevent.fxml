@@ -65,7 +65,6 @@
             <TableColumn fx:id="nameE" prefWidth="75.0" text="Name" />
             <TableColumn fx:id="maxE" prefWidth="75.0" text="Max Particiants" />
             <TableColumn fx:id="descE" prefWidth="75.0" text="Description" />
-            <TableColumn fx:id="dateE" prefWidth="75.0" text="Date" />
             <TableColumn fx:id="adrE" prefWidth="75.0" text="Address" />
             <TableColumn fx:id="nbrGoingE" prefWidth="75.0" text="Nbr Going" />
             <TableColumn fx:id="themeT" prefWidth="75.0" text="Theme" />

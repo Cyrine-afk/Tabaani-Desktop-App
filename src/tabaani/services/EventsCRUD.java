@@ -61,11 +61,8 @@ public class EventsCRUD {
             pst.setString(4, E.getDescription());
             pst.setDate(5, Date_event);
             pst.setString(6, E.getEventaddress());
-            pst.setInt(7, E.getEventtheme_id());
-            
-            
-            
-            pst.setInt(8, E.getOrg_id().getId());
+            pst.setInt(7, 3);
+            pst.setInt(8, 2);
             pst.setInt(9, E.getNbr_going());
             
             

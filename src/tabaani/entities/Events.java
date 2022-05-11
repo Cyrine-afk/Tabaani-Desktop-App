@@ -21,14 +21,14 @@ public class Events {
     private LocalDate eventdate;
     private String eventaddress;
     private int eventtheme_id;
-    private User org_id;
+    private int org_id;
     private int nbr_going;
 
     public Events() {
     }
     
 
-    public Events(int id, int nbrmaxpart, String imageevent, String eventname, String description, LocalDate eventdate, String eventaddress, int eventtheme_id, User org_id, int nbr_going) {
+    public Events(int id, int nbrmaxpart, String imageevent, String eventname, String description, LocalDate eventdate, String eventaddress, int eventtheme_id, int org_id, int nbr_going) {
         this.id = id;
         this.nbrmaxpart = nbrmaxpart;
         this.imageevent = imageevent;
@@ -41,7 +41,7 @@ public class Events {
         this.nbr_going = nbr_going;
     }
 
-    public Events(int nbrmaxpart, String imageevent, String eventname, String description, LocalDate eventdate, String eventaddress, int eventtheme_id, User org_id, int nbr_going) {
+    public Events(int nbrmaxpart, String imageevent, String eventname, String description, LocalDate eventdate, String eventaddress, int eventtheme_id, int org_id, int nbr_going) {
         this.nbrmaxpart = nbrmaxpart;
         this.imageevent = imageevent;
         this.eventname = eventname;
@@ -53,7 +53,7 @@ public class Events {
         this.nbr_going = nbr_going;
     }
 
-    public Events(int nbrmaxpart, String eventname, String description, LocalDate eventdate, String eventaddress, int eventtheme_id, User org_id, int nbr_going) {
+    public Events(int nbrmaxpart, String eventname, String description, LocalDate eventdate, String eventaddress, int eventtheme_id, int org_id, int nbr_going) {
         this.nbrmaxpart = nbrmaxpart;
         this.eventname = eventname;
         this.description = description;
@@ -64,7 +64,7 @@ public class Events {
         this.nbr_going = nbr_going;
     }
 
-    public Events(int id, int nbrmaxpart, String imageevent, String eventname, String description, String eventaddress, int eventtheme_id, User org_id, int nbr_going) {
+    public Events(int id, int nbrmaxpart, String imageevent, String eventname, String description, String eventaddress, int eventtheme_id, int org_id, int nbr_going) {
         this.id = id;
         this.nbrmaxpart = nbrmaxpart;
         this.imageevent = imageevent;
@@ -89,9 +89,9 @@ public class Events {
     
     
 
-    public Events(int aInt, int aInt0, String string, String string0, String string1, String string2, int aInt1, int aInt2, int aInt3) {
+   /* public Events(int aInt, int aInt0, String string, String string0, String string1, String string2, int aInt1, int aInt2, int aInt3) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    }*/
     
     
 
@@ -159,11 +159,11 @@ public class Events {
         this.eventtheme_id = eventtheme_id;
     }
 
-    public User getOrg_id() {
+    public int getOrg_id() {
         return org_id;
     }
 
-    public void setOrg_id(User org_id) {
+    public void setOrg_id(int org_id) {
         this.org_id = org_id;
     }
 
