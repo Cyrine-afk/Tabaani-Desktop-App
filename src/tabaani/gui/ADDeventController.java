@@ -5,9 +5,21 @@
  */
 package tabaani.gui;
 
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.pdf.PdfPTable;
+import com.lowagie.text.pdf.PdfTable;
+import com.lowagie.text.pdf.PdfWriter;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
@@ -324,6 +336,7 @@ public class ADDeventController implements Initializable {
                 
                 EventsCRUD tcr = new EventsCRUD();
                 tcr.ajouterEvent2(t);
+                refreshTable();
                 notificationShow();
             }
         } catch (Exception ex) {
@@ -477,7 +490,7 @@ public class ADDeventController implements Initializable {
     }
 
     @FXML
-    private void print(MouseEvent event) {
+    private void print() {
         
         /*String path="";
         JFileChooser j = new JFileChooser();
@@ -487,7 +500,71 @@ public class ADDeventController implements Initializable {
         
         if (x==JFileChooser.APPROVE_OPTION) {
             path=j.getSelectedFile().getPath();
+        }
+        
+        Document doc = new Document();
+        
+        try {
+            PdfWriter.getInstance(doc, new FileOutputStream(path+"Tabaani_Events_Report."));
+            
+            doc.open();
+            
+            PdfPTable tbl=new PdfPTable(3);
+            
+            //Adding Header
+            tbl.addCell("Name");
+            tbl.addCell("Description");
+            tbl.addCell("Address");
+            tbl.addCell("Max Participants");
+            tbl.addCell("Number Going");
+            tbl.addCell("Theme");
+            tbl.addCell("Organizer");
+            
+            for (int i = 0; i < 7; i++) {
+                for (int j = 0; j < 6; i++) {
+                    //getValueAt(i,0).toString();
+                    String name=(String) tblThemes.getColumns().get(i).getCellObservableValue(j).getValue().toString();
+                    String descr=tblThemes.getValueAt(i,1).toString();
+                    String adr=tblThemes.getValueAt(i,2).toString();
+                    String maxP=tblThemes.getValueAt(i,3).toString();
+                    String nbrG=tblThemes.getValueAt(i,4).toString();
+                    String theme=tblThemes.getValueAt(i,5).toString();
+                    String host=tblThemes.getValueAt(i,6).toString();
+                
+                                    
+                }
+            }
+            
+        } catch (FileNotFoundException | DocumentException ex) {
+            Logger.getLogger(ADDeventController.class.getName()).log(Level.SEVERE, null, ex);
         }*/
+        
+        System.out.println("msg");
+        
+        Document doc = new Document();
+        try {
+            PdfWriter.getInstance(doc, new FileOutputStream("C:\\Users\\DELL\\Tabaani_Events_Report.pdf"));
+            doc.open();
+            
+            doc.add(new Paragraph("Tabaani - Events Database"));
+            
+            /*Image img = Image.getInstance("D:\\3ème_TIC_ESPRIT\\2eme_Semestre\\PIDEV\\Code\\Desktop\\Tabaani\\src\\images\\full.png");
+            doc.add((Element) img);*/
+            
+            doc.close();
+            try {
+                Desktop.getDesktop().open(new File("C:\\Users\\DELL\\Tabaani_Events_Report.pdf"));
+            } catch (IOException ex) {
+                Logger.getLogger(ADDeventController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         
         
     }

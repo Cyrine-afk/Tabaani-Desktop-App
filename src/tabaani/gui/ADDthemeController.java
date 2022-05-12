@@ -175,6 +175,13 @@ public class ADDthemeController implements Initializable {
         }
         
     }
+    
+    
+    private void clean() {
+        nameTh.setText(null);
+        picTh.setText(null);
+        
+    }
 
     @FXML
     private void saveTheme(ActionEvent event) {
@@ -205,7 +212,10 @@ public class ADDthemeController implements Initializable {
                 ThemesCRUD tcr = new ThemesCRUD();
                 tcr.ajouterTheme2(t);
                 
+                refreshTable();
+                obList.clear();
                 notificationShow();
+                
             }
         } catch (Exception ex) {
             System.out.println("Error: "+ex.getMessage());
@@ -333,7 +343,7 @@ public class ADDthemeController implements Initializable {
         FilteredList<Themes> filteredData = new FilteredList<>(obList, b -> true);
         // Set the filter Predicate whenever the filter changes.
 		filterField.textProperty().addListener((observable, oldValue, newValue) -> {
-			filteredData.setPredicate(theme -> {
+			filteredData.setPredicate(themee -> {
 				// If filter text is empty, display all persons.
 								
 				if (newValue == null || newValue.isEmpty()) {
@@ -343,7 +353,7 @@ public class ADDthemeController implements Initializable {
 				// Compare first name and last name of every person with filter text.
 				String lowerCaseFilter = newValue.toLowerCase();
 				
-				if (theme.getThemename().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+				if (themee.getThemename().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
 					return true; // Filter matches theme name.
                                 }
 				else  
